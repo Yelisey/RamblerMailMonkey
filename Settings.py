@@ -29,9 +29,6 @@ def clearField(x,y):
     
 #Scrool Down on your activity screen    
 def scrollFunction(x,y, diffValue, duration, steps):
-    #for i in range(1, 11):
-        #device.touch(x, y + 30 * i, MonkeyDevice.DOWN)
-        #time.sleep(2)
     device.drag ((x, y), (x, y - diffValue), duration, steps)        
 
     
@@ -56,29 +53,6 @@ def startActivityRamblerMail():
     snpShot('ScreenShotsMail/test1.png')
 
 
-#Test - Click on login button without data (C253 on TestRail)
-def testClickOnLoginButtonWithoutData():
-    device.touch(260, 550, MonkeyDevice.DOWN_AND_UP)
-    snpShot('ScreenShotsMail/Login_Without_Data.png')
-
-
-#Test - Check registration button (C31684 on TestRail)
-def testClickOnRegistrationButtonAndClickBack():
-    device.touch(390, 900, MonkeyDevice.DOWN_AND_UP)
-    time.sleep(2) 
-    device.touch(55, 80, MonkeyDevice.DOWN_AND_UP)
-    time.sleep(2) 
-    
-#Test - Check login with incorrect data (C247 on TestRail)    
-def testClickOnLoginButtonWithIncorrectData():
-    device.touch(80, 360, MonkeyDevice.DOWN_AND_UP)    
-    device.type(INCORRECT_EMAIL_DATA)
-    device.touch(70, 470, MonkeyDevice.DOWN_AND_UP)        
-    device.type(INCORRECT_PASSWORD_DATA)
-    time.sleep(0.5) 
-    device.touch(260, 370, MonkeyDevice.DOWN_AND_UP)
-    snpShot('ScreenShotsMail/Login_With_Incorrect_Data.png')    
-    
 #Test - Check login with correct data (C255 on TestRail)    
 def testClickOnLoginButtonWithCorrectData():
     device.touch(80, 360, MonkeyDevice.DOWN_AND_UP)    
@@ -91,33 +65,7 @@ def testClickOnLoginButtonWithCorrectData():
     device.touch(260, 370, MonkeyDevice.DOWN_AND_UP)
     snpShot('ScreenShotsMail/Login_With_Correct_Data.png')    
     backToAutorizationForm()
-    
-#Test - Check login without  email (C253 on TestRail)    
-def testClickOnLoginButtonWithoutEmail():
-    device.touch(80, 360, MonkeyDevice.DOWN_AND_UP)    
-    clearField(80, 360)
-    device.touch(70, 470, MonkeyDevice.DOWN_AND_UP)    
-    clearField(70, 470)    
-    device.type(CORRECT_PASSWORD_DATA)
-    device.touch(260, 370, MonkeyDevice.DOWN_AND_UP)
-    snpShot('ScreenShotsMail/Login_Without_Email.png')    
-
-#Test - Check login without  password (C253 on TestRail)        
-def testClickOnLoginButtonWithoutPassword():
-    device.touch(80, 360, MonkeyDevice.DOWN_AND_UP)    
-    clearField(80, 360)
-    device.type(CORRECT_EMAIL_DATA)
-    device.touch(70, 470, MonkeyDevice.DOWN_AND_UP)    
-    time.sleep(0.5) 
-    clearField(70, 470)     
-    device.touch(260, 370, MonkeyDevice.DOWN_AND_UP)
-    snpShot('ScreenShotsMail/Login_Without_Password.png')    
 
     
 startActivityRamblerMail()
-testClickOnLoginButtonWithoutData()
-testClickOnRegistrationButtonAndClickBack()
-testClickOnLoginButtonWithIncorrectData()
 testClickOnLoginButtonWithCorrectData()
-testClickOnLoginButtonWithoutEmail()
-testClickOnLoginButtonWithoutPassword()
