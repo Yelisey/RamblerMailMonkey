@@ -91,6 +91,7 @@ def testUpdateName():
     time.sleep(0.5)
     snpShot('ScreenShotsMail/Updated_name.png')  
     
+    
 def testUpdateSignature():
     device.touch(50, 410, MonkeyDevice.DOWN_AND_UP)
     device.touch(90, 480, MonkeyDevice.DOWN)    
@@ -100,12 +101,19 @@ def testUpdateSignature():
     time.sleep(0.5)
     snpShot('ScreenShotsMail/Updated_signature.png')  
     
+    
 def testNotifications():
     device.touch(490, 550, MonkeyDevice.DOWN_AND_UP)
     snpShot('ScreenShotsMail/Updated_notif_1.png')    
     device.touch(490, 550, MonkeyDevice.DOWN_AND_UP)
     snpShot('ScreenShotsMail/Updated_notif_2.png')   
-    
+
+
+def testVibro():
+    device.touch(490, 550, MonkeyDevice.DOWN_AND_UP)
+    snpShot('ScreenShotsMail/Updated_notif_1.png')    
+    device.touch(490, 550, MonkeyDevice.DOWN_AND_UP)
+    snpShot('ScreenShotsMail/Updated_notif_2.png')   
       
 startActivityRamblerMail()
 testClickOnLoginButtonWithCorrectData()
