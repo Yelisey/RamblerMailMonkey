@@ -4,7 +4,7 @@ from com.sun.xml.internal.bind.v2 import TODO
 
 packageName = 'ru.rambler.mail'
 activity = 'ru.rambler.mail.StartActivity'
-apkName = 'rambler_mail-prod-debug-unaligned_1.apk'
+apkName = 'prodRelease-1.7.0.5-release.apk'
 device = MonkeyRunner.waitForConnection()
 
 CORRECT_EMAIL_DATA = 'testyelosh'
@@ -67,7 +67,7 @@ def backToFeedback():
     
     
 def deleteAllText():
-    fieldLength = 100
+    fieldLength = 20
   # select all the chars
     device.press('KEYCODE_SHIFT_LEFT', MonkeyDevice.DOWN)
     for i in range(fieldLength):
