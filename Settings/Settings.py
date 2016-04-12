@@ -12,6 +12,9 @@ INCORRECT_EMAIL_DATA = '@*$&&!_%*&_'
 INCORRECT_PASSWORD_DATA = 'dsfsdgsdgsd'
 TIME_OF_SLEEP_WHERE_TAKE_SNAPSHOT = 3
 TIME_OF_SLEEP_WHERE_CLEAR = 2
+NAME = "jdklf*#@)(48#&)@_**("
+SIGNATURE = "jdklf*#@)(48#&)@_**(<SCRIPT>"
+
 
 #Take snapshot from your screen
 def snpShot(file):
@@ -27,10 +30,18 @@ def clearField(x,y):
     device.type('')
     time.sleep(TIME_OF_SLEEP_WHERE_CLEAR) 
     
+    
 #Scrool Down on your activity screen    
 def scrollFunction(x,y, diffValue, duration, steps):
     device.drag ((x, y), (x, y - diffValue), duration, steps)        
 
+
+def openSettings():   
+    device.touch(40, 87, MonkeyDevice.DOWN_AND_UP)
+    time.sleep(3) 
+    device.touch(400, 75, MonkeyDevice.DOWN_AND_UP)
+    time.sleep(3)   
+    
     
 #Back to Autorization form    
 def backToAutorizationForm():
@@ -63,9 +74,42 @@ def testClickOnLoginButtonWithCorrectData():
     device.type(CORRECT_PASSWORD_DATA)
     time.sleep(0.5) 
     device.touch(260, 370, MonkeyDevice.DOWN_AND_UP)
-    snpShot('ScreenShotsMail/Login_With_Correct_Data.png')    
-    backToAutorizationForm()
-
+    snpShot('ScreenShotsMail/Login_With_Correct_Data.png')  
     
+    
+def testOpenSettings():    
+    openSettings()   
+    
+
+def testUpdateName():
+    device.touch(50, 285, MonkeyDevice.DOWN_AND_UP)
+    device.touch(90, 480, MonkeyDevice.DOWN)    
+    clearField(90, 325)
+    device.type(NAME)
+    time.sleep(0.5)
+    device.touch(460, 600, MonkeyDevice.DOWN_AND_UP)
+    time.sleep(0.5)
+    snpShot('ScreenShotsMail/Updated_name.png')  
+    
+def testUpdateSignature():
+    device.touch(50, 410, MonkeyDevice.DOWN_AND_UP)
+    device.touch(90, 480, MonkeyDevice.DOWN)    
+    clearField(90, 325)
+    device.type(SIGNATURE)
+    device.touch(460, 600, MonkeyDevice.DOWN_AND_UP)
+    time.sleep(0.5)
+    snpShot('ScreenShotsMail/Updated_signature.png')  
+    
+def testNotifications():
+    device.touch(490, 550, MonkeyDevice.DOWN_AND_UP)
+    snpShot('ScreenShotsMail/Updated_notif_1.png')    
+    device.touch(490, 550, MonkeyDevice.DOWN_AND_UP)
+    snpShot('ScreenShotsMail/Updated_notif_2.png')   
+    
+      
 startActivityRamblerMail()
 testClickOnLoginButtonWithCorrectData()
+testOpenSettings()
+testUpdateName()
+testUpdateSignature()
+testNotifications()
