@@ -32,7 +32,8 @@ def clearField(x,y):
     
 #Scrool Down on your activity screen    
 def scroll(x,y, diffValue, duration, steps):
-    device.drag ((x, y), (x, y - diffValue), duration, steps)        
+    device.touch(x, y, MonkeyDevice.DOWN)
+    device.drag ((x, y), (x, y + diffValue), duration, steps)        
 
 
 def openSettings():   
@@ -85,8 +86,8 @@ def startActivityRamblerMail():
 def openListOfFolder():
     time.sleep(2)
     device.touch(40, 80, MonkeyDevice.DOWN_AND_UP)
-    scroll(300,800, 300, 1.0, 80)
-    
+    scroll(350,800, 600, 1.0, 80)
+    device.touch(350, 1400, MonkeyDevice.DOWN_AND_UP)
 
 #Test - Check login with correct data (C255 on TestRail)    
 def testClickOnLoginButtonWithCorrectData():
