@@ -13,10 +13,7 @@ INCORRECT_EMAIL_DATA = '@*$&&!_%*&_'
 INCORRECT_PASSWORD_DATA = 'dsfsdgsdgsd'
 TIME_OF_SLEEP_WHERE_TAKE_SNAPSHOT = 3
 TIME_OF_SLEEP_WHERE_CLEAR = 2
-NAME = "jdklf*#@)(48#&)@_**("
-SIGNATURE = "jdklf*#@)(48#&)@_**(<SCRIPT>"
-FEEDBACK_OF_BUG = 'TEST FEEDBACK OF BUG FROM AUTO TEST'
-FEEDBACK_OF_NEW_FUNCTION = 'TEST FEEDBACK OF NEW FUNCTION FROM AUTO TEST'
+
 
 #Take snapshot from your screen
 def snpShot(file):
@@ -84,6 +81,12 @@ def startActivityRamblerMail():
     device.startActivity(component=runComponent)
     snpShot('ScreenShotsMail/test1.png')
 
+#Start main activity        
+def openListOfFolder():
+    time.sleep(2)
+    device.touch(40, 80, MonkeyDevice.DOWN_AND_UP)
+    scroll(300,800, 300, 1.0, 80)
+    
 
 #Test - Check login with correct data (C255 on TestRail)    
 def testClickOnLoginButtonWithCorrectData():
@@ -97,72 +100,11 @@ def testClickOnLoginButtonWithCorrectData():
     device.touch(260, 370, MonkeyDevice.DOWN_AND_UP)
     snpShot('ScreenShotsMail/Login_With_Correct_Data.png')  
     
-    
-def testOpenSettings():    
-    openSettings()   
-    
+def testOpenAddMailForm():
+    openListOfFolder()   
 
-def testUpdateName():
-    device.touch(50, 285, MonkeyDevice.DOWN_AND_UP)
-    device.touch(90, 480, MonkeyDevice.DOWN)    
-    #device.press('KEYCODE_DEL', MonkeyDevice.DOWN_AND_UP)
-    deleteAllText()
-    device.type(NAME)
-    time.sleep(0.5)
-    device.touch(460, 600, MonkeyDevice.DOWN_AND_UP)
-    time.sleep(0.5)
-    snpShot('ScreenShotsMail/Updated_name.png')  
-    
-    
-def testUpdateSignature():
-    device.touch(50, 410, MonkeyDevice.DOWN_AND_UP)
-    device.touch(90, 480, MonkeyDevice.DOWN)    
-    #device.press('KEYCODE_DEL', MonkeyDevice.DOWN_AND_UP)
-    deleteAllText()
-    device.type(SIGNATURE)
-    device.touch(460, 600, MonkeyDevice.DOWN_AND_UP)
-    time.sleep(0.5)
-    snpShot('ScreenShotsMail/Updated_signature.png')  
-    
-    
-def testNotifications():
-    device.touch(490, 550, MonkeyDevice.DOWN_AND_UP)
-    snpShot('ScreenShotsMail/Updated_notif_1.png')    
-    device.touch(490, 550, MonkeyDevice.DOWN_AND_UP)
-    snpShot('ScreenShotsMail/Updated_notif_2.png')   
-
-#TODO Need parse picture from screen
-def testVibro():
-    device.touch(490, 550, MonkeyDevice.DOWN_AND_UP)
-    snpShot('ScreenShotsMail/Updated_notif_1.png')    
-    device.touch(490, 550, MonkeyDevice.DOWN_AND_UP)
-    snpShot('ScreenShotsMail/Updated_notif_2.png') 
-   
-def testFeedbackOfBug():
-    scroll(300,800, 300, 1.0, 80)
-    time.sleep(2) 
-    device.touch(70, 300, MonkeyDevice.DOWN_AND_UP)
-    time.sleep(2) 
-    device.type(FEEDBACK_OF_BUG)
-    device.touch(508, 70, MonkeyDevice.DOWN_AND_UP)
-    time.sleep(2) 
-
-def testFeedbackOfNewFunction():
-    backToFeedback()
-    time.sleep(2) 
-    device.touch(90, 180, MonkeyDevice.DOWN_AND_UP)
-    time.sleep(0.5) 
-    device.touch(150, 230, MonkeyDevice.DOWN_AND_UP)
-    time.sleep(0.5)
-    device.touch(70, 310, MonkeyDevice.DOWN_AND_UP)
-    device.type(FEEDBACK_OF_NEW_FUNCTION)
-    device.touch(508, 70, MonkeyDevice.DOWN_AND_UP)
-    
       
 startActivityRamblerMail()
 testClickOnLoginButtonWithCorrectData()
-testOpenSettings()
-testUpdateName()
-testUpdateSignature()
-testNotifications()
-#testFeedbackOfBug()
+testOpenAddMailForm()
+
